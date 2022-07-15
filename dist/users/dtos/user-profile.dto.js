@@ -16,21 +16,21 @@ const output_dto_1 = require("./output.dto");
 let UserProfileInput = class UserProfileInput {
 };
 __decorate([
-    graphql_1.Field(type => Number),
+    (0, graphql_1.Field)(type => Number),
     __metadata("design:type", Number)
 ], UserProfileInput.prototype, "userId", void 0);
 UserProfileInput = __decorate([
-    graphql_1.ArgsType()
+    (0, graphql_1.ArgsType)()
 ], UserProfileInput);
 exports.UserProfileInput = UserProfileInput;
 let UserProfileOutput = class UserProfileOutput extends output_dto_1.CoreOutput {
 };
 __decorate([
-    graphql_1.Field(type => user_entity_1.User, { nullable: true }),
+    (0, graphql_1.Field)(type => user_entity_1.User, { nullable: true }),
     __metadata("design:type", user_entity_1.User)
 ], UserProfileOutput.prototype, "user", void 0);
 UserProfileOutput = __decorate([
-    graphql_1.ObjectType()
+    (0, graphql_1.ObjectType)()
 ], UserProfileOutput);
 exports.UserProfileOutput = UserProfileOutput;
 //# sourceMappingURL=user-profile.dto.js.map

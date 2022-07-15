@@ -15,23 +15,23 @@ const typeorm_1 = require("typeorm");
 let CoreEntity = class CoreEntity {
 };
 __decorate([
-    typeorm_1.PrimaryGeneratedColumn(),
-    graphql_1.Field(type => graphql_1.Int),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, graphql_1.Field)(type => graphql_1.Int),
     __metadata("design:type", Number)
 ], CoreEntity.prototype, "id", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn(),
-    graphql_1.Field(type => Date),
+    (0, typeorm_1.CreateDateColumn)(),
+    (0, graphql_1.Field)(type => Date),
     __metadata("design:type", Date)
 ], CoreEntity.prototype, "createdAt", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn(),
-    graphql_1.Field(type => Date),
+    (0, typeorm_1.UpdateDateColumn)(),
+    (0, graphql_1.Field)(type => Date),
     __metadata("design:type", Date)
 ], CoreEntity.prototype, "updatedAt", void 0);
 CoreEntity = __decorate([
-    typeorm_1.Entity(),
-    graphql_1.ObjectType()
+    (0, typeorm_1.Entity)(),
+    (0, graphql_1.ObjectType)()
 ], CoreEntity);
 exports.CoreEntity = CoreEntity;
 //# sourceMappingURL=core.entity.js.map

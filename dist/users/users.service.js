@@ -14,12 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
-const users_entity_1 = require("./entities/users.entity");
+const user_entity_1 = require("./entities/user.entity");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
+const jwt_service_1 = require("../jwt/jwt.service");
 let UsersService = class UsersService {
-    constructor(users) {
+    constructor(users, jwtService) {
         this.users = users;
+        this.jwtService = jwtService;
     }
     async createAccount({ email, password, role, }) {
         try {
@@ -58,9 +60,10 @@ let UsersService = class UsersService {
                     error: 'Wrong password',
                 };
             }
+            const token = this.jwtService.sign(user.id);
             return {
                 ok: true,
-                token: `testToken`,
+                token,
             };
         }
         catch (error) {
@@ -70,11 +73,55 @@ let UsersService = class UsersService {
             };
         }
     }
+    async findById(id) {
+        try {
+            const user = await this.users.findOneOrFail({ id });
+            return {
+                ok: true,
+                user,
+            };
+        }
+        catch (error) {
+            return {
+                ok: false,
+                error: 'User Not Found',
+            };
+        }
+    }
+    async editProfile(userId, { email, password }) {
+        try {
+            const user = await this.users.findOneOrFail(userId);
+            if (email) {
+                const alreadyTakenEmail = await this.users.findOne({
+                    where: { email },
+                });
+                if (alreadyTakenEmail)
+                    return {
+                        ok: false,
+                        error: 'alreadyTakenEmail',
+                    };
+                user.email = email;
+            }
+            if (password)
+                user.password = password;
+            await this.users.save(user);
+            return {
+                ok: true,
+            };
+        }
+        catch (error) {
+            return {
+                ok: false,
+                error: 'Could not update profile',
+            };
+        }
+    }
 };
 UsersService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(users_entity_1.Users)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(user_entity_1.User)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        jwt_service_1.JwtService])
 ], UsersService);
 exports.UsersService = UsersService;
 //# sourceMappingURL=users.service.js.map

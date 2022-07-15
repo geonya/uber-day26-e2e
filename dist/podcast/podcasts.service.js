@@ -47,6 +47,7 @@ let PodcastsService = class PodcastsService {
             };
         }
         catch (e) {
+            console.error(e);
             return this.InternalServerErrorOutput;
         }
     }
@@ -198,9 +199,9 @@ let PodcastsService = class PodcastsService {
     }
 };
 PodcastsService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(podcast_entity_1.Podcast)),
-    __param(1, typeorm_1.InjectRepository(episode_entity_1.Episode)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(podcast_entity_1.Podcast)),
+    __param(1, (0, typeorm_1.InjectRepository)(episode_entity_1.Episode)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
         typeorm_2.Repository])
 ], PodcastsService);

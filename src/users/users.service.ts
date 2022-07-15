@@ -100,7 +100,18 @@ export class UsersService {
     try {
       const user = await this.users.findOneOrFail(userId);
 
-      if (email) user.email = email;
+      if (email) {
+        const alreadyTakenEmail = await this.users.findOne({
+          where: { email },
+        });
+        if (alreadyTakenEmail)
+          return {
+            ok: false,
+            error: 'alreadyTakenEmail',
+          };
+        user.email = email;
+      }
+
       if (password) user.password = password;
 
       await this.users.save(user);

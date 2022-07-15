@@ -17,53 +17,53 @@ const class_validator_1 = require("class-validator");
 let GetAllPodcastsOutput = class GetAllPodcastsOutput extends output_dto_1.CoreOutput {
 };
 __decorate([
-    graphql_1.Field(type => [podcast_entity_1.Podcast], { nullable: true }),
+    (0, graphql_1.Field)(type => [podcast_entity_1.Podcast], { nullable: true }),
     __metadata("design:type", Array)
 ], GetAllPodcastsOutput.prototype, "podcasts", void 0);
 GetAllPodcastsOutput = __decorate([
-    graphql_1.ObjectType()
+    (0, graphql_1.ObjectType)()
 ], GetAllPodcastsOutput);
 exports.GetAllPodcastsOutput = GetAllPodcastsOutput;
-let PodcastSearchInput = class PodcastSearchInput extends graphql_1.PickType(podcast_entity_1.Podcast, ['id'], graphql_1.InputType) {
+let PodcastSearchInput = class PodcastSearchInput extends (0, graphql_1.PickType)(podcast_entity_1.Podcast, ['id'], graphql_1.InputType) {
 };
 PodcastSearchInput = __decorate([
-    graphql_1.InputType()
+    (0, graphql_1.InputType)()
 ], PodcastSearchInput);
 exports.PodcastSearchInput = PodcastSearchInput;
 let PodcastOutput = class PodcastOutput extends output_dto_1.CoreOutput {
 };
 __decorate([
-    graphql_1.Field(type => podcast_entity_1.Podcast, { nullable: true }),
+    (0, graphql_1.Field)(type => podcast_entity_1.Podcast, { nullable: true }),
     __metadata("design:type", podcast_entity_1.Podcast)
 ], PodcastOutput.prototype, "podcast", void 0);
 PodcastOutput = __decorate([
-    graphql_1.ObjectType()
+    (0, graphql_1.ObjectType)()
 ], PodcastOutput);
 exports.PodcastOutput = PodcastOutput;
 let EpisodesOutput = class EpisodesOutput extends output_dto_1.CoreOutput {
 };
 __decorate([
-    graphql_1.Field(type => [podcast_entity_1.Podcast], { nullable: true }),
+    (0, graphql_1.Field)(type => [podcast_entity_1.Podcast], { nullable: true }),
     __metadata("design:type", Array)
 ], EpisodesOutput.prototype, "episodes", void 0);
 EpisodesOutput = __decorate([
-    graphql_1.ObjectType()
+    (0, graphql_1.ObjectType)()
 ], EpisodesOutput);
 exports.EpisodesOutput = EpisodesOutput;
 let EpisodesSearchInput = class EpisodesSearchInput {
 };
 __decorate([
-    graphql_1.Field(type => graphql_1.Int),
-    class_validator_1.IsInt(),
+    (0, graphql_1.Field)(type => graphql_1.Int),
+    (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
 ], EpisodesSearchInput.prototype, "podcastId", void 0);
 __decorate([
-    graphql_1.Field(type => graphql_1.Int),
-    class_validator_1.IsInt(),
+    (0, graphql_1.Field)(type => graphql_1.Int),
+    (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
 ], EpisodesSearchInput.prototype, "episodeId", void 0);
 EpisodesSearchInput = __decorate([
-    graphql_1.InputType()
+    (0, graphql_1.InputType)()
 ], EpisodesSearchInput);
 exports.EpisodesSearchInput = EpisodesSearchInput;
 class GetEpisodeOutput extends output_dto_1.CoreOutput {

@@ -15,18 +15,18 @@ const class_validator_1 = require("class-validator");
 let CoreOutput = class CoreOutput {
 };
 __decorate([
-    graphql_1.Field(type => String, { nullable: true }),
-    class_validator_1.IsString(),
-    class_validator_1.IsOptional(),
+    (0, graphql_1.Field)(type => String, { nullable: true }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CoreOutput.prototype, "error", void 0);
 __decorate([
-    graphql_1.Field(type => Boolean),
-    class_validator_1.IsBoolean(),
+    (0, graphql_1.Field)(type => Boolean),
+    (0, class_validator_1.IsBoolean)(),
     __metadata("design:type", Boolean)
 ], CoreOutput.prototype, "ok", void 0);
 CoreOutput = __decorate([
-    graphql_1.ObjectType()
+    (0, graphql_1.ObjectType)()
 ], CoreOutput);
 exports.CoreOutput = CoreOutput;
 //# sourceMappingURL=output.dto.js.map

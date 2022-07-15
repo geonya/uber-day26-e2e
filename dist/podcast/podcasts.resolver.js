@@ -44,41 +44,41 @@ let PodcastsResolver = class PodcastsResolver {
     }
 };
 __decorate([
-    graphql_1.Query(returns => podcast_dto_1.GetAllPodcastsOutput),
+    (0, graphql_1.Query)(returns => podcast_dto_1.GetAllPodcastsOutput),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], PodcastsResolver.prototype, "getAllPodcasts", null);
 __decorate([
-    graphql_1.Mutation(returns => create_podcast_dto_1.CreatePodcastOutput),
-    __param(0, graphql_1.Args('input')),
+    (0, graphql_1.Mutation)(returns => create_podcast_dto_1.CreatePodcastOutput),
+    __param(0, (0, graphql_1.Args)('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_podcast_dto_1.CreatePodcastInput]),
     __metadata("design:returntype", Promise)
 ], PodcastsResolver.prototype, "createPodcast", null);
 __decorate([
-    graphql_1.Query(returns => podcast_dto_1.PodcastOutput),
-    __param(0, graphql_1.Args('input')),
+    (0, graphql_1.Query)(returns => podcast_dto_1.PodcastOutput),
+    __param(0, (0, graphql_1.Args)('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [podcast_dto_1.PodcastSearchInput]),
     __metadata("design:returntype", Promise)
 ], PodcastsResolver.prototype, "getPodcast", null);
 __decorate([
-    graphql_1.Mutation(returns => output_dto_1.CoreOutput),
-    __param(0, graphql_1.Args('input')),
+    (0, graphql_1.Mutation)(returns => output_dto_1.CoreOutput),
+    __param(0, (0, graphql_1.Args)('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [podcast_dto_1.PodcastSearchInput]),
     __metadata("design:returntype", Promise)
 ], PodcastsResolver.prototype, "deletePodcast", null);
 __decorate([
-    graphql_1.Mutation(returns => output_dto_1.CoreOutput),
-    __param(0, graphql_1.Args('input')),
+    (0, graphql_1.Mutation)(returns => output_dto_1.CoreOutput),
+    __param(0, (0, graphql_1.Args)('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [update_podcast_dto_1.UpdatePodcastInput]),
     __metadata("design:returntype", Promise)
 ], PodcastsResolver.prototype, "updatePodcast", null);
 PodcastsResolver = __decorate([
-    graphql_1.Resolver(of => podcast_entity_1.Podcast),
+    (0, graphql_1.Resolver)(of => podcast_entity_1.Podcast),
     __metadata("design:paramtypes", [podcasts_service_1.PodcastsService])
 ], PodcastsResolver);
 exports.PodcastsResolver = PodcastsResolver;
@@ -100,35 +100,35 @@ let EpisodeResolver = class EpisodeResolver {
     }
 };
 __decorate([
-    graphql_1.Query(returns => podcast_dto_1.EpisodesOutput),
-    __param(0, graphql_1.Args('input')),
+    (0, graphql_1.Query)(returns => podcast_dto_1.EpisodesOutput),
+    __param(0, (0, graphql_1.Args)('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [podcast_dto_1.PodcastSearchInput]),
     __metadata("design:returntype", Promise)
 ], EpisodeResolver.prototype, "getEpisodes", null);
 __decorate([
-    graphql_1.Mutation(returns => create_episode_dto_1.CreateEpisodeOutput),
-    __param(0, graphql_1.Args('input')),
+    (0, graphql_1.Mutation)(returns => create_episode_dto_1.CreateEpisodeOutput),
+    __param(0, (0, graphql_1.Args)('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_episode_dto_1.CreateEpisodeInput]),
     __metadata("design:returntype", Promise)
 ], EpisodeResolver.prototype, "createEpisode", null);
 __decorate([
-    graphql_1.Mutation(returns => output_dto_1.CoreOutput),
-    __param(0, graphql_1.Args('input')),
+    (0, graphql_1.Mutation)(returns => output_dto_1.CoreOutput),
+    __param(0, (0, graphql_1.Args)('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [update_episode_dto_1.UpdateEpisodeInput]),
     __metadata("design:returntype", Promise)
 ], EpisodeResolver.prototype, "updateEpisode", null);
 __decorate([
-    graphql_1.Mutation(returns => output_dto_1.CoreOutput),
-    __param(0, graphql_1.Args('input')),
+    (0, graphql_1.Mutation)(returns => output_dto_1.CoreOutput),
+    __param(0, (0, graphql_1.Args)('input')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [podcast_dto_1.EpisodesSearchInput]),
     __metadata("design:returntype", Promise)
 ], EpisodeResolver.prototype, "deleteEpisode", null);
 EpisodeResolver = __decorate([
-    graphql_1.Resolver(of => episode_entity_1.Episode),
+    (0, graphql_1.Resolver)(of => episode_entity_1.Episode),
     __metadata("design:paramtypes", [podcasts_service_1.PodcastsService])
 ], EpisodeResolver);
 exports.EpisodeResolver = EpisodeResolver;

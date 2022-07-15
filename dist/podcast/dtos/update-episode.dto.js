@@ -16,19 +16,19 @@ const podcast_dto_1 = require("./podcast.dto");
 let UpdateEpisodeInput = class UpdateEpisodeInput extends podcast_dto_1.EpisodesSearchInput {
 };
 __decorate([
-    graphql_1.Field(type => String, { nullable: true }),
-    class_validator_1.IsString(),
-    class_validator_1.IsOptional(),
+    (0, graphql_1.Field)(type => String, { nullable: true }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UpdateEpisodeInput.prototype, "title", void 0);
 __decorate([
-    graphql_1.Field(type => String, { nullable: true }),
-    class_validator_1.IsString(),
-    class_validator_1.IsOptional(),
+    (0, graphql_1.Field)(type => String, { nullable: true }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UpdateEpisodeInput.prototype, "category", void 0);
 UpdateEpisodeInput = __decorate([
-    graphql_1.InputType()
+    (0, graphql_1.InputType)()
 ], UpdateEpisodeInput);
 exports.UpdateEpisodeInput = UpdateEpisodeInput;
 //# sourceMappingURL=update-episode.dto.js.map

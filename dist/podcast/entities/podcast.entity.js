@@ -18,33 +18,33 @@ const core_entity_1 = require("./core.entity");
 let Podcast = class Podcast extends core_entity_1.CoreEntity {
 };
 __decorate([
-    typeorm_1.Column(),
-    graphql_1.Field(type => String),
-    class_validator_1.IsString(),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], Podcast.prototype, "title", void 0);
 __decorate([
-    typeorm_1.Column(),
-    graphql_1.Field(type => String),
-    class_validator_1.IsString(),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], Podcast.prototype, "category", void 0);
 __decorate([
-    typeorm_1.Column({ default: 0 }),
-    graphql_1.Field(type => Number),
-    class_validator_1.IsNumber(),
-    class_validator_1.Min(0),
-    class_validator_1.Max(5),
+    (0, typeorm_1.Column)({ default: 0 }),
+    (0, graphql_1.Field)(type => Number),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0),
+    (0, class_validator_1.Max)(5),
     __metadata("design:type", Number)
 ], Podcast.prototype, "rating", void 0);
 __decorate([
-    typeorm_1.OneToMany(() => episode_entity_1.Episode, episode => episode.podcast),
-    graphql_1.Field(type => [episode_entity_1.Episode]),
+    (0, typeorm_1.OneToMany)(() => episode_entity_1.Episode, episode => episode.podcast),
+    (0, graphql_1.Field)(type => [episode_entity_1.Episode]),
     __metadata("design:type", Array)
 ], Podcast.prototype, "episodes", void 0);
 Podcast = __decorate([
-    typeorm_1.Entity(),
-    graphql_1.ObjectType()
+    (0, typeorm_1.Entity)(),
+    (0, graphql_1.ObjectType)()
 ], Podcast);
 exports.Podcast = Podcast;
 //# sourceMappingURL=podcast.entity.js.map

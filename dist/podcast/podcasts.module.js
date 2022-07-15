@@ -16,7 +16,7 @@ const episode_entity_1 = require("./entities/episode.entity");
 let PodcastsModule = class PodcastsModule {
 };
 PodcastsModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([podcast_entity_1.Podcast, episode_entity_1.Episode])],
         providers: [podcasts_service_1.PodcastsService, podcasts_resolver_1.PodcastsResolver, podcasts_resolver_1.EpisodeResolver],
     })

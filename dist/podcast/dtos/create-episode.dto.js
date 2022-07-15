@@ -14,25 +14,25 @@ const graphql_1 = require("@nestjs/graphql");
 const class_validator_1 = require("class-validator");
 const episode_entity_1 = require("../entities/episode.entity");
 const output_dto_1 = require("./output.dto");
-let CreateEpisodeInput = class CreateEpisodeInput extends graphql_1.PickType(episode_entity_1.Episode, ['title', 'category'], graphql_1.InputType) {
+let CreateEpisodeInput = class CreateEpisodeInput extends (0, graphql_1.PickType)(episode_entity_1.Episode, ['title', 'category'], graphql_1.InputType) {
 };
 __decorate([
-    graphql_1.Field(type => graphql_1.Int),
-    class_validator_1.IsInt(),
+    (0, graphql_1.Field)(type => graphql_1.Int),
+    (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
 ], CreateEpisodeInput.prototype, "podcastId", void 0);
 CreateEpisodeInput = __decorate([
-    graphql_1.InputType()
+    (0, graphql_1.InputType)()
 ], CreateEpisodeInput);
 exports.CreateEpisodeInput = CreateEpisodeInput;
 let CreateEpisodeOutput = class CreateEpisodeOutput extends output_dto_1.CoreOutput {
 };
 __decorate([
-    graphql_1.Field(type => graphql_1.Int, { nullable: true }),
+    (0, graphql_1.Field)(type => graphql_1.Int, { nullable: true }),
     __metadata("design:type", Number)
 ], CreateEpisodeOutput.prototype, "id", void 0);
 CreateEpisodeOutput = __decorate([
-    graphql_1.ObjectType()
+    (0, graphql_1.ObjectType)()
 ], CreateEpisodeOutput);
 exports.CreateEpisodeOutput = CreateEpisodeOutput;
 //# sourceMappingURL=create-episode.dto.js.map

@@ -13,20 +13,20 @@ exports.CreatePodcastOutput = exports.CreatePodcastInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const podcast_entity_1 = require("../entities/podcast.entity");
 const output_dto_1 = require("./output.dto");
-let CreatePodcastInput = class CreatePodcastInput extends graphql_1.PickType(podcast_entity_1.Podcast, ['title', 'category'], graphql_1.InputType) {
+let CreatePodcastInput = class CreatePodcastInput extends (0, graphql_1.PickType)(podcast_entity_1.Podcast, ['title', 'category'], graphql_1.InputType) {
 };
 CreatePodcastInput = __decorate([
-    graphql_1.InputType()
+    (0, graphql_1.InputType)()
 ], CreatePodcastInput);
 exports.CreatePodcastInput = CreatePodcastInput;
 let CreatePodcastOutput = class CreatePodcastOutput extends output_dto_1.CoreOutput {
 };
 __decorate([
-    graphql_1.Field(type => graphql_1.Int, { nullable: true }),
+    (0, graphql_1.Field)(type => graphql_1.Int, { nullable: true }),
     __metadata("design:type", Number)
 ], CreatePodcastOutput.prototype, "id", void 0);
 CreatePodcastOutput = __decorate([
-    graphql_1.ObjectType()
+    (0, graphql_1.ObjectType)()
 ], CreatePodcastOutput);
 exports.CreatePodcastOutput = CreatePodcastOutput;
 //# sourceMappingURL=create-podcast.dto.js.map

@@ -44,6 +44,7 @@ export class PodcastsService {
         podcasts,
       };
     } catch (e) {
+      console.error(e);
       return this.InternalServerErrorOutput;
     }
   }

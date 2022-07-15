@@ -12,20 +12,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdatePodcastInput = exports.UpdatePodcastPayload = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const podcast_entity_1 = require("../entities/podcast.entity");
-let UpdatePodcastPayload = class UpdatePodcastPayload extends graphql_1.PartialType(graphql_1.PickType(podcast_entity_1.Podcast, ['title', 'category', 'rating'], graphql_1.InputType)) {
+let UpdatePodcastPayload = class UpdatePodcastPayload extends (0, graphql_1.PartialType)((0, graphql_1.PickType)(podcast_entity_1.Podcast, ['title', 'category', 'rating'], graphql_1.InputType)) {
 };
 UpdatePodcastPayload = __decorate([
-    graphql_1.InputType()
+    (0, graphql_1.InputType)()
 ], UpdatePodcastPayload);
 exports.UpdatePodcastPayload = UpdatePodcastPayload;
-let UpdatePodcastInput = class UpdatePodcastInput extends graphql_1.PickType(podcast_entity_1.Podcast, ['id'], graphql_1.InputType) {
+let UpdatePodcastInput = class UpdatePodcastInput extends (0, graphql_1.PickType)(podcast_entity_1.Podcast, ['id'], graphql_1.InputType) {
 };
 __decorate([
-    graphql_1.Field(type => UpdatePodcastPayload),
+    (0, graphql_1.Field)(type => UpdatePodcastPayload),
     __metadata("design:type", UpdatePodcastPayload)
 ], UpdatePodcastInput.prototype, "payload", void 0);
 UpdatePodcastInput = __decorate([
-    graphql_1.InputType()
+    (0, graphql_1.InputType)()
 ], UpdatePodcastInput);
 exports.UpdatePodcastInput = UpdatePodcastInput;
 //# sourceMappingURL=update-podcast.dto.js.map

@@ -18,27 +18,27 @@ const podcast_entity_1 = require("./podcast.entity");
 let Episode = class Episode extends core_entity_1.CoreEntity {
 };
 __decorate([
-    typeorm_1.Column(),
-    graphql_1.Field(type => String),
-    class_validator_1.IsString(),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], Episode.prototype, "title", void 0);
 __decorate([
-    typeorm_1.Column(),
-    graphql_1.Field(type => String),
-    class_validator_1.IsString(),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], Episode.prototype, "category", void 0);
 __decorate([
-    typeorm_1.ManyToOne(() => podcast_entity_1.Podcast, podcast => podcast.episodes, {
+    (0, typeorm_1.ManyToOne)(() => podcast_entity_1.Podcast, podcast => podcast.episodes, {
         onDelete: 'CASCADE',
     }),
-    graphql_1.Field(type => podcast_entity_1.Podcast),
+    (0, graphql_1.Field)(type => podcast_entity_1.Podcast),
     __metadata("design:type", podcast_entity_1.Podcast)
 ], Episode.prototype, "podcast", void 0);
 Episode = __decorate([
-    typeorm_1.Entity(),
-    graphql_1.ObjectType()
+    (0, typeorm_1.Entity)(),
+    (0, graphql_1.ObjectType)()
 ], Episode);
 exports.Episode = Episode;
 //# sourceMappingURL=episode.entity.js.map

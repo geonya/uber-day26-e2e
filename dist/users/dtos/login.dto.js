@@ -11,22 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginOutput = exports.LoginInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const users_entity_1 = require("../entities/users.entity");
+const user_entity_1 = require("../entities/user.entity");
 const output_dto_1 = require("./output.dto");
-let LoginInput = class LoginInput extends graphql_1.PickType(users_entity_1.Users, ['email', 'password']) {
+let LoginInput = class LoginInput extends (0, graphql_1.PickType)(user_entity_1.User, ['email', 'password']) {
 };
 LoginInput = __decorate([
-    graphql_1.InputType()
+    (0, graphql_1.InputType)()
 ], LoginInput);
 exports.LoginInput = LoginInput;
 let LoginOutput = class LoginOutput extends output_dto_1.CoreOutput {
 };
 __decorate([
-    graphql_1.Field(type => String, { nullable: true }),
+    (0, graphql_1.Field)(type => String, { nullable: true }),
     __metadata("design:type", String)
 ], LoginOutput.prototype, "token", void 0);
 LoginOutput = __decorate([
-    graphql_1.ObjectType()
+    (0, graphql_1.ObjectType)()
 ], LoginOutput);
 exports.LoginOutput = LoginOutput;
 //# sourceMappingURL=login.dto.js.map

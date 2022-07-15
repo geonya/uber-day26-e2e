@@ -21,7 +21,7 @@ var UserRole;
     UserRole["Host"] = "Host";
     UserRole["Listener"] = "Listener";
 })(UserRole = exports.UserRole || (exports.UserRole = {}));
-graphql_1.registerEnumType(UserRole, { name: 'UserRole' });
+(0, graphql_1.registerEnumType)(UserRole, { name: 'UserRole' });
 let User = class User extends core_entity_1.CoreEntity {
     async hashPassword() {
         if (!this.password) {
@@ -47,33 +47,33 @@ let User = class User extends core_entity_1.CoreEntity {
     }
 };
 __decorate([
-    typeorm_1.Column(),
-    graphql_1.Field(type => String),
-    class_validator_1.IsEmail(),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => String),
+    (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
-    typeorm_1.Column(),
-    graphql_1.Field(type => String),
-    class_validator_1.IsString(),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    typeorm_1.Column({ type: 'simple-enum', enum: UserRole }),
-    graphql_1.Field(type => UserRole),
+    (0, typeorm_1.Column)({ type: 'simple-enum', enum: UserRole }),
+    (0, graphql_1.Field)(type => UserRole),
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
 __decorate([
-    typeorm_1.BeforeInsert(),
-    typeorm_1.BeforeUpdate(),
+    (0, typeorm_1.BeforeInsert)(),
+    (0, typeorm_1.BeforeUpdate)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], User.prototype, "hashPassword", null);
 User = __decorate([
-    graphql_1.InputType('UserInputType', { isAbstract: true }),
-    graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, graphql_1.InputType)('UserInputType', { isAbstract: true }),
+    (0, graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], User);
 exports.User = User;
 //# sourceMappingURL=user.entity.js.map
