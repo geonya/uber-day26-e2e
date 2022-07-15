@@ -14,6 +14,10 @@ const testUser = {
   password: '1234',
   role: UserRole.Host,
 };
+const testPodcast = {
+  title: 'hello world',
+  category: 'drama',
+};
 
 describe('App (e2e)', () => {
   let app: INestApplication;
@@ -302,7 +306,31 @@ describe('App (e2e)', () => {
 
   describe('Podcasts Resolver', () => {
     describe('createPodcast', () => {
-      it.todo('should create podcast');
+      it('should create podcast', () => {
+        return privateReq(`mutation {
+          createPodcast(input:{
+            title:"${testPodcast.title}"
+            category:"${testPodcast.category}"
+          }) {
+            ok
+            error
+            id
+          }
+        }`)
+          .expect(200)
+          .expect(res => {
+            const {
+              body: {
+                data: {
+                  createPodcast: { ok, error, id },
+                },
+              },
+            } = res;
+            expect(ok).toBe(true);
+            expect(error).toBe(null);
+            expect(id).toEqual(expect.any(Number));
+          });
+      });
       it.todo('should not found episodes');
     });
     describe('createEpisode', () => {
