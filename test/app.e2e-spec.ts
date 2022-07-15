@@ -15,8 +15,12 @@ const testUser = {
   role: UserRole.Host,
 };
 const testPodcast = {
-  title: 'hello world',
-  category: 'drama',
+  title: 'test podcast',
+  category: 'test',
+};
+const testEpisode = {
+  title: 'test episode',
+  category: 'test',
 };
 
 describe('App (e2e)', () => {
@@ -305,6 +309,8 @@ describe('App (e2e)', () => {
   });
 
   describe('Podcasts Resolver', () => {
+    let podcastId: number;
+    let episodeId: number;
     describe('createPodcast', () => {
       it('should create podcast', () => {
         return privateReq(`mutation {
@@ -331,29 +337,49 @@ describe('App (e2e)', () => {
             expect(id).toEqual(expect.any(Number));
           });
       });
-      it.todo('should not found episodes');
     });
     describe('createEpisode', () => {
-      it.todo('should create episode');
-      it.todo('should not create episode');
+      it('should create episode', async () => {
+        const [podcast] = await podcastRepository.find();
+        podcastId = podcast.id;
+        return privateReq(`mutation {
+          createEpisode(input:{
+            title:"${testEpisode.title}"
+            category:"${testEpisode.category}"
+            podcastId:${podcastId}
+          }) {
+            ok
+            error
+            id
+          }
+        }`)
+          .expect(200)
+          .expect(res => {
+            const {
+              body: {
+                data: {
+                  createEpisode: { ok, error, id },
+                },
+              },
+            } = res;
+            expect(ok).toBe(true);
+            expect(error).toBe(null);
+            expect(id).toEqual(expect.any(Number));
+            episodeId = id;
+          });
+      });
     });
     describe('getAllPodcasts', () => {
       it('should get all podcasts', () => {
-        return request(server)
-          .post(GRAPHQL_ENDPOINT)
-          .send({
-            query: `
-            {
-              getAllPodcasts{
-                ok
-                error
-                podcasts {
-                  id
-                }
-              }
+        return privateReq(`{
+          getAllPodcasts{
+            ok
+            error
+            podcasts {
+              id
             }
-          `,
-          })
+          }
+        }`)
           .expect(200)
           .expect(res => {
             const {
@@ -363,35 +389,180 @@ describe('App (e2e)', () => {
                 },
               },
             } = res;
+            const [podcast] = podcasts;
+            expect(ok).toBe(true);
+            expect(error).toBe(null);
+            expect(podcast.id).toBe(podcastId);
+          });
+      });
+    });
+    describe('getPodcast', () => {
+      it('should get podcast', () => {
+        return privateReq(`{
+          getPodcast(input:{
+            id:${podcastId}
+          }) {
+            ok
+            error
+            podcast {
+              title
+            }
+          }
+        }`)
+          .expect(200)
+          .expect(res => {
+            const {
+              body: {
+                data: {
+                  getPodcast: { ok, error, podcast },
+                },
+              },
+            } = res;
+            expect(ok).toBe(true);
+            expect(error).toBe(null);
+            expect(podcast.title).toBe(testPodcast.title);
+          });
+      });
+    });
+    describe('getEpisodes', () => {
+      it('should get episodes', () => {
+        return privateReq(`{
+          getEpisodes(input:{
+            id:${podcastId}
+          }) {
+            ok
+            error
+            episodes {
+              id
+            }
+          }
+        }`)
+          .expect(200)
+          .expect(res => {
+            const {
+              body: {
+                data: {
+                  getEpisodes: { ok, error, episodes },
+                },
+              },
+            } = res;
+            const [episode] = episodes;
+            expect(ok).toBe(true);
+            expect(error).toBe(null);
+            expect(episode.id).toBe(episodeId);
+          });
+      });
+    });
+    describe('updatePodcast', () => {
+      const NEW_TITLE = 'test2 title';
+      const NEW_CATEGORY = 'test2';
+      const NEW_RATING = 5;
+      it('should update podcast', () => {
+        return privateReq(`mutation {
+          updatePodcast(input:{
+            id:${podcastId}
+            payload:{
+              title:"${NEW_TITLE}"
+              category:"${NEW_CATEGORY}"
+              rating:${NEW_RATING}
+            }
+          }) {
+            ok
+            error
+          }
+        }`)
+          .expect(200)
+          .expect(res => {
+            const {
+              body: {
+                data: {
+                  updatePodcast: { ok, error },
+                },
+              },
+            } = res;
             expect(ok).toBe(true);
             expect(error).toBe(null);
           });
       });
-      it.todo('should not found podcasts');
-    });
-    describe('getPodcast', () => {
-      it.todo('should get podcast');
-      it.todo('should not found podcast');
-    });
-    describe('getEpisodes', () => {
-      it.todo('should get episodes');
-      it.todo('should not found episodes');
-    });
-    describe('updatePodcast', () => {
-      it.todo('should update podcast');
-      it.todo('should not update podcast');
     });
     describe('updateEpisode', () => {
-      it.todo('should update episode');
-      it.todo('should not update episode');
+      const NEW_TITLE = 'test2 title';
+      const NEW_CATEGORY = 'test2';
+      it('should update episode', () => {
+        return privateReq(`mutation {
+          updateEpisode(input:{
+            podcastId:${podcastId}
+            episodeId:${episodeId}
+            title:"${NEW_TITLE}"
+            category:"${NEW_CATEGORY}"
+          }) {
+            ok
+            error
+          }
+        }`)
+          .expect(200)
+          .expect(res => {
+            const {
+              body: {
+                data: {
+                  updateEpisode: { ok, error },
+                },
+              },
+            } = res;
+            expect(ok).toBe(true);
+            expect(error).toBe(null);
+          });
+      });
     });
     describe('deleteEpisode', () => {
-      it.todo('should delete episode');
-      it.todo('should not able to delete episode');
+      it('should delete episode', () => {
+        return privateReq(`mutation {
+          deleteEpisode(input:{
+            podcastId:${podcastId}
+            episodeId:${episodeId}
+          }) {
+            ok
+            error
+          }
+        }`)
+          .expect(200)
+          .expect(res => {
+            const {
+              body: {
+                data: {
+                  deleteEpisode: { ok, error },
+                },
+              },
+            } = res;
+            expect(ok).toBe(true);
+            expect(error).toBe(null);
+          });
+      });
     });
     describe('deletePodcast', () => {
-      it.todo('should delete podcast');
-      it.todo('should not able to delete podcast');
+      it('should delete podcast', () => {
+        return privateReq(`mutation {
+          deletePodcast(input:{
+            id:${podcastId}
+          }) {
+            ok
+            error
+          }
+        }
+        `)
+          .expect(200)
+          .expect(res => {
+            const {
+              body: {
+                data: {
+                  deletePodcast: { ok, error },
+                },
+              },
+            } = res;
+            expect(ok).toBe(true);
+            expect(error).toBe(null);
+          });
+      });
     });
   });
 });
